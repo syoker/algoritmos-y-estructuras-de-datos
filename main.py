@@ -1,38 +1,54 @@
-import random
+import os
+import importlib
 
-random.seed(49)
+def clear_history():
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')
 
-suma = 0
-cont = 0
-acum_multi5 = 0
-acum_multi7 = 0
-acum_multi9 = 0
-may58 = 0
-cont_par15000 = 0
+unit10_exercise01 = exercise_one_module = importlib.import_module('src.unit-10.exercise-one')
 
-for _ in range(20000):
-    cont += 1
-    random_number = random.randint(1, 45000)
-    suma += random_number
-    if (random_number%5) == 0:
-        acum_multi5 += 1
+def main():
+  while True:
+    clear_history()
+    print('Algorithms and Data Structures')
+    print('')
+    print('00 - Exit')
+    print('01 - Basics')
+    print('02 - Sequential Structures')
+    print('03 - Basic Structured Types')
+    print('04 - Conditional Structures')
+    print('05 - Conditional Structures: Variants')
+    print('06 - Repetitive Structures: While Loop')
+    print('07 - Repetitive Structures: For Loop')
+    print('08 - Repetitive Structures: Variants')
+    print('09 - Character Sequence Processing')
+    print('10 - Subproblems And Functions')
+    print('')
+    
+    unit_selected = input('Select a unit to open (the complete name or the unit number): ')
 
-    if (random_number%7) == 0:
-        acum_multi7 += 1
+    if unit_selected == 'Exit' or unit_selected == 'exit' or unit_selected == 0:
+       break
+    elif unit_selected == 'Basics' or unit_selected == 'basics' or unit_selected == 1:
+        clear_history()
+        continue
+    elif unit_selected == 'Subproblems And Functions' or unit_selected == 'subproblems and functions' or unit_selected == 10:
+        clear_history()
+        print('[Unit 10] Subproblems And Functions')
+        print('1 - exercise-one.py')
+        print('2 - exercise-two.py')
 
-    if (random_number%9) == 0:
-        acum_multi9 += 1
+        exercise_selected = input('Select a file to execute (the filename): ')
 
-    if (5 <= (random_number % 10) <= 8) and random_number > may58:
-        may58 = random_number
+        if exercise_selected == 'exercise-one.py':
+           function_main = unit10_exercise01.main
+           function_main()
+           input('Continue...')
+           clear_history()
+    else:
+        continue
 
-    if (random_number%2) == 0 and random_number < 15000:
-        cont_par15000 += 1
-
-print('suma:', suma)
-print('multiplos de 5:', acum_multi5)
-print('multiplos de 7:', acum_multi7)
-print('multiplos de 9:', acum_multi9)
-print('numero mayor:', may58)
-print('pares menores de 15000:', cont_par15000)
-print('porcentaje:', cont_par15000*100 // cont)
+if __name__ == '__main__':
+    main()
