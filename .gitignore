@@ -1,2 +1,6 @@
 # cache
 __pycache__
+
+# IDE files
+.idea
+.venv
