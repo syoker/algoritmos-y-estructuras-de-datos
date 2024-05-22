@@ -85,6 +85,7 @@ def main():
         clear_history()
 
         print(unit_processed[1])
+        file_selected = None
         unit_files = get_list(unit_processed[0])
         
         print('')
@@ -111,10 +112,8 @@ def main():
             if filename_written in options:
                 file_selected = unit_file[4:-3]
                 break
-            else:
-                filename_written = 'pass'
 
-        if filename_written != 'pass':
+        if file_selected != None:
             try:
                 function_main = get_function(unit_processed[0], file_selected).main
                 function_main()
