@@ -19,10 +19,16 @@ def human_second_part():
     print("La cantidad total de segundos es:", segundos)
 
 def main():
-    while True:
-        print('01. Parsear segundos a fecha')
-        print('02. Parsear fecha a segundos')
-        print('')
-        select_option = input('Selecciona una opcion: ')
+    print('01. Parsear segundos a fecha')
+    print('02. Parsear fecha a segundos')
+    print('')
+    option_selected = input('Selecciona una opcion: ')
 
+    if option_selected in ['01', '1']:
+        human_first_part()
+    elif option_selected in ['02', '2']:
+        human_second_part()
+    else:
+        print('Opcion inexistente')
+            
         
