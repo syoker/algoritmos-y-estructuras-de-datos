@@ -50,6 +50,8 @@ def get_unit(unit):
         return 'unit-09', '[Unit 09] Character Sequence Processing'
     elif unit in ['10 - Subproblems and Functions', 'Subproblems and Functions', 'subproblems and functions', '10']:
         return 'unit-10', '[Unit 10] Subproblems and Functions'
+    elif unit in ['11 - Unit 11', 'Unit 11', '11']:
+        return 'unit-11', '[Unit 11] Unit 11'
     else:
         return 'pass'
 
@@ -71,6 +73,7 @@ def main():
     print('08 - Repetitive Structures: Variants')
     print('09 - Character Sequence Processing')
     print('10 - Subproblems and Functions')
+    print('11 - Unit 11')
     print('')
     
     unit_written = input('Select a unit to open: ')
