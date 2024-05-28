@@ -45,9 +45,7 @@ def get_unit(n, units):
         if unit_processed[0:2] in ['01', '02', '03', '04', '05', '06', '07', '08', '09']:
             options.append(unit_processed[1])
         if n in options:
-            print(options)
-            input()
-            return f'unit-{counter:02d}', f'[Unit {counter:02d}] - {unit}'
+            return f'unit-{counter:02d}', f'[Unit {counter:02d}] {unit}'
 
     return 'pass'
 
