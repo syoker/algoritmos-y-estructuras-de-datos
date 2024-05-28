@@ -27,57 +27,58 @@ def get_list(unit):
     
     return py_files
 
-def get_unit(unit):
-    if unit in ['00 - Exit', 'Exit', 'exit', '00', '0']:
+def get_unit(n, units):
+    counter = 0
+
+    if n in ['00 - Exit', 'Exit', 'exit', 'EXIT', '00', '0']:
         return 'exit'
-    elif unit in ['01 - Basics', 'Basics', 'basics', '01', '1']:
-        return 'unit-01', '[Unit 01] Basics'
-    elif unit in ['02 - Sequential Structures', 'Sequential Structures', 'sequential structures', '02', '2']:
-        return 'unit-02', '[Unit 02] Sequential Structures'
-    elif unit in ['03 - Basic Structured Types', 'Basic Structured Types', 'basic structured types', '03', '3']:
-        return 'unit-03', '[Unit 03] Basic Structured Types'
-    elif unit in ['04 - Conditional Structures', 'Conditional Structures', 'conditional structures', '04', '4']:
-        return 'unit-04', '[Unit 04] Conditional Structures'
-    elif unit in ['05 - Conditional Structures: Variants', 'Conditional Structures: Variants', 'conditional structures: variants', '05', '5']:
-        return 'unit-05', '[Unit 05] Conditional Structures: Variants'
-    elif unit in ['06 - Repetitive Structures: While Loop', 'Repetitive Structures: While Loop', 'repetitive structures: while loop', '06', '6']:
-        return 'unit-06', '[Unit 06] Repetitive Structures: While Loop'
-    elif unit in ['07 - Repetitive Structures: For Loop', 'Repetitive Structures: For Loop', 'repetitive structures: for loop', '07', '7']:
-        return 'unit-07', '[Unit 07] Repetitive Structures: For Loop'
-    elif unit in ['08 - Repetitive Structures: Variants', 'Repetitive Structures: Variants', 'repetitive structures: variants', '08', '8']:
-        return 'unit-08', '[Unit 08] Repetitive Structures: Variants'
-    elif unit in ['09 - Character Sequence Processing', 'Character Sequence Processing', 'character sequence processing', '09', '9']:
-        return 'unit-09', '[Unit 09] Character Sequence Processing'
-    elif unit in ['10 - Subproblems and Functions', 'Subproblems and Functions', 'subproblems and functions', '10']:
-        return 'unit-10', '[Unit 10] Subproblems and Functions'
-    elif unit in ['11 - Unit 11', 'Unit 11', '11']:
-        return 'unit-11', '[Unit 11] Unit 11'
-    else:
-        return 'pass'
+
+    for unit in units:
+        counter += 1
+        options = []
+        unit_processed = f'{counter:02d} - {unit}'
+        options.append(unit_processed)
+        options.append(unit_processed[5:])
+        options.append(unit_processed[5:].lower())
+        options.append(unit_processed[5:].upper())
+        options.append(unit_processed[0:2])
+        if unit_processed[0:2] in ['01', '02', '03', '04', '05', '06', '07', '08', '09']:
+            options.append(unit_processed[1])
+        if n in options:
+            print(options)
+            input()
+            return f'unit-{counter:02d}', f'[Unit {counter:02d}] - {unit}'
+
+    return 'pass'
 
 def main():
+  units = ['Basics',
+  'Sequential Structures',
+  'Basic Structured Types',
+  'Conditional Structures',
+  'Conditional Structures: Variants',
+  'Repetitive Structures: While Loop',
+  'Repetitive Structures: For Loop',
+  'Repetitive Structures: Variants',
+  'Character Sequence Processing',
+  'Subproblems and Functions',
+  'Functions: Detailed Implementation']
+
   while True:
     while_condition = 1
+    counter = 0
 
     clear_history()
     print('Algorithms and Data Structures')
     print('')
     print('00 - Exit')
-    print('01 - Basics')
-    print('02 - Sequential Structures')
-    print('03 - Basic Structured Types')
-    print('04 - Conditional Structures')
-    print('05 - Conditional Structures: Variants')
-    print('06 - Repetitive Structures: While Loop')
-    print('07 - Repetitive Structures: For Loop')
-    print('08 - Repetitive Structures: Variants')
-    print('09 - Character Sequence Processing')
-    print('10 - Subproblems and Functions')
-    print('11 - Unit 11')
+    for unit in units:
+      counter += 1
+      print(f'{counter:02d} - {unit}')
     print('')
     
     unit_written = input('Select a unit to open: ')
-    unit_processed = get_unit(unit_written)
+    unit_processed = get_unit(unit_written, units)
 
     if unit_processed == 'exit':
         break
